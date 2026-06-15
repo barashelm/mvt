@@ -23,8 +23,8 @@ def main():
         scenario=args.scenario)()
 
     # Define model
-    # models available:'csinetp', 'crnet', 'transnet', 'stnet', 'mnet', 'crissnet', 'mvt'
-    modename = 'mvt'
+    # models available:'csinetp', 'crnet', 'transnet', 'stnet', 'mnet', 'crissnet'
+    modename = 'transnet'
     model = init_model(modename, args)
 
     model.to(device)
@@ -54,8 +54,6 @@ def main():
         lr_init = 2e-3
     elif modename == 'crissnet':
         lr_init = 3e-3
-    elif modename == 'mvt':
-        lr_init = 6e-4
     else: lr_init = 1e-4
 
     optimizer = torch.optim.Adam(model.parameters(), lr_init)

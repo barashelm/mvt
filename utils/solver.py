@@ -73,7 +73,6 @@ class Trainer:
         for ep in range(self.cur_epoch, epochs + 1):
             self.cur_epoch = ep
 
-            # 量化感知训练时也能更新quant的cur_epoch
             quant_mod = getattr(self.model, "origin", self.model)
             if hasattr(quant_mod, "quant") and hasattr(quant_mod.quant, "cur_epoch"):
                 quant_mod.quant.cur_epoch = self.cur_epoch
